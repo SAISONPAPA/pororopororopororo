@@ -1,0 +1,316 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>대부도 키즈풀빌라 비교</title>
+<style>
+:root{
+  --bg:#f6f7f9; --card:#fff; --ink:#1d2330; --sub:#5d6575; --line:#e3e6ec;
+  --a:#2f7df6; --b:#13a07a; --c:#e07a1f; --warn:#c2410c; --warnbg:#fff4ec; --ok:#0f766e; --okbg:#ecfdf5;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#12151b; --card:#1b2029; --ink:#e8ebf1; --sub:#9aa3b2; --line:#2b3240;
+    --warnbg:#3a2516; --okbg:#12302a;
+  }
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Noto Sans KR","Malgun Gothic",sans-serif;line-height:1.55;font-size:15px}
+.wrap{max-width:980px;margin:0 auto;padding:20px 16px 60px}
+h1{font-size:22px;margin:4px 0 6px}
+h2{font-size:18px;margin:34px 0 12px;padding-bottom:6px;border-bottom:2px solid var(--line)}
+h3{font-size:16px;margin:18px 0 8px}
+.sub{color:var(--sub);font-size:13.5px}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0 4px}
+.chip{background:var(--card);border:1px solid var(--line);border-radius:999px;padding:4px 10px;font-size:13px}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px;margin-top:14px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;position:relative}
+.card .tag{position:absolute;top:14px;right:14px;font-size:11.5px;font-weight:700;padding:3px 8px;border-radius:6px;color:#fff}
+.card h3{margin:0 0 2px}
+.card .total{font-size:26px;font-weight:800;margin:10px 0 0}
+.card .per{font-size:13px;color:var(--sub)}
+.card ul{margin:10px 0 0;padding-left:18px;font-size:13.5px}
+.card ul li{margin:2px 0}
+.bar{height:5px;border-radius:5px;margin:-16px -16px 12px;border-radius:14px 14px 0 0}
+.a .bar{background:var(--a)} .b .bar{background:var(--b)} .c .bar{background:var(--c)}
+.tbl-wrap{overflow-x:auto;background:var(--card);border:1px solid var(--line);border-radius:12px}
+table{border-collapse:collapse;width:100%;min-width:640px;font-size:13.5px}
+th,td{padding:9px 10px;border-bottom:1px solid var(--line);vertical-align:top;text-align:left}
+thead th{background:var(--bg);font-size:13px;position:sticky;top:0}
+tbody th{width:120px;color:var(--sub);font-weight:600;background:var(--card)}
+td.best{background:var(--okbg);font-weight:700}
+.warn{background:var(--warnbg);color:var(--warn);border-radius:10px;padding:10px 12px;font-size:13.5px;margin:10px 0}
+.ok{background:var(--okbg);color:var(--ok);border-radius:10px;padding:10px 12px;font-size:13.5px;margin:10px 0}
+.detail{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;margin-bottom:14px}
+.detail h3{margin-top:0;display:flex;align-items:center;gap:8px}
+.dot{width:10px;height:10px;border-radius:50%;display:inline-block}
+.kv{display:grid;grid-template-columns:110px 1fr;gap:4px 10px;font-size:14px}
+.kv div:nth-child(odd){color:var(--sub)}
+.detail ul{padding-left:18px;margin:6px 0}
+.detail li{margin:3px 0;font-size:14px}
+.cost{width:100%;min-width:0;margin-top:8px}
+.cost td{border-bottom:1px dashed var(--line)}
+.cost td:last-child{text-align:right;white-space:nowrap}
+.cost tr.sum td{font-weight:800;border-bottom:none;border-top:2px solid var(--ink)}
+.calc{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:8px;font-size:14px}
+.calc input{width:140px;padding:7px 9px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink);font-size:15px}
+ol.check li{margin:6px 0}
+.src a{color:var(--a);word-break:break-all}
+.src li{font-size:13px;margin:3px 0}
+.hero{display:block;width:calc(100% + 32px);margin:-12px -16px 12px;aspect-ratio:16/10;object-fit:cover;background:var(--line)}
+.gallery{display:flex;gap:8px;overflow-x:auto;scroll-snap-type:x mandatory;margin:4px 0 14px;padding-bottom:6px}
+.gallery figure{margin:0;flex:0 0 72%;max-width:320px;scroll-snap-align:start}
+.gallery img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:10px;background:var(--line);display:block}
+.gallery figcaption{font-size:12px;color:var(--sub);margin-top:3px}
+@media (min-width:700px){.gallery figure{flex-basis:32%}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<h1>대부도 키즈풀빌라 3곳 비교</h1>
+<div class="sub">2026년 10월 8일 각 펜션 예약 사이트(키즈밸리·골드밸리) 기준으로 정리. 정확한 금액은 예약 직전 실시간예약 화면에서 다시 확인하세요.</div>
+<div class="chips">
+  <span class="chip">📅 12/5(토) 1박 → 12/6(일) 퇴실</span>
+  <span class="chip">👨‍👩‍👧 4가족 · 성인 8 + 아이 6 = 총 14명</span>
+  <span class="chip">♨️ 온수풀 이용</span>
+  <span class="chip">📍 3곳 모두 대부도(안산 단원구 대부남동) — 제부도 아님</span>
+</div>
+
+<!-- ===== SUMMARY ===== -->
+<h2>한눈에 보는 총액 (12/5 토 · 14명 · 온수풀 포함)</h2>
+<div class="cards">
+  <div class="card b">
+    <div class="bar"></div>
+    <img class="hero" referrerpolicy="no-referrer" loading="lazy" src="https://img2.itravelgo.co.kr/data/pension/789/landscape/640/phpziNOI7.jpg" alt="꾸꾸 키즈풀빌라">
+    <h3>꾸꾸 키즈풀빌라</h3>
+    <div class="sub">110평 · 방5 · 화장실3 · 키즈밸리</div>
+    <div class="total">1,200,000원</div>
+    <div class="per">가족당 300,000원</div>
+    <ul>
+      <li>수영장 5×9m + 워터슬라이드 (3곳 중 가장 큼, 확인된 기준)</li>
+      <li>기준 16명 → 14명이라 인원 추가금 0원</li>
+      <li>입실 14:00으로 가장 빠름</li>
+    </ul>
+  </div>
+  <div class="card a">
+    <div class="bar"></div>
+    <img class="hero" referrerpolicy="no-referrer" loading="lazy" src="https://img2.itravelgo.co.kr/data/pension/778/landscape/640/phpUj5irg.jpg" alt="엘마르 키즈풀빌라">
+    <h3>엘마르 키즈풀빌라</h3>
+    <div class="sub">105평 · 방4 + 다락 · 화장실3 · 키즈밸리</div>
+    <div class="total">1,200,000원</div>
+    <div class="per">가족당 300,000원</div>
+    <ul>
+      <li>실내 온수풀 4×6m (꾸꾸보다 작음)</li>
+      <li>기준=최대 16명 → 추가금 0원, 여유 2명뿐</li>
+      <li>야외수영장은 6~9월만 → 12월엔 의미 없음</li>
+    </ul>
+  </div>
+  <div class="card c">
+    <div class="bar"></div>
+    <img class="hero" referrerpolicy="no-referrer" loading="lazy" src="https://assets.goldenvalley.co.kr/pensions/d3aa7da2-dbab-4222-a57a-25a2b50c02c8.jpg" alt="고래 키즈풀빌라">
+    <h3>고래 키즈풀빌라</h3>
+    <div class="sub">100평 신축 · 방5 · 화장실3 · 골드밸리</div>
+    <div class="total">1,200,000원</div>
+    <div class="per">가족당 300,000원</div>
+    <ul>
+      <li>놀이시설 가장 많음 (플레이룸, DDR, 클라이밍, 야외놀이터 등)</li>
+      <li>기준 15명 → 14명이라 추가금 0원</li>
+      <li>입실 15:00으로 가장 늦음</li>
+    </ul>
+  </div>
+</div>
+
+<div class="ok">✅ 12/5(토) 숙박비는 3곳 모두 <b>1,100,000원</b>으로 확인됨. 온수풀 100,000원을 더하면 세 곳 모두 <b>총 1,200,000원</b>으로 같습니다. 가격이 같으니 수영장 크기·방 개수·놀이시설로 고르시면 됩니다.</div>
+
+<!-- ===== COMPARE TABLE ===== -->
+<h2>항목별 비교표</h2>
+<div class="tbl-wrap">
+<table>
+<thead>
+<tr><th></th><th style="color:var(--a)">엘마르</th><th style="color:var(--b)">꾸꾸</th><th style="color:var(--c)">고래</th></tr>
+</thead>
+<tbody>
+<tr><th>예약처</th><td>대부도 키즈밸리<br>1600-3142</td><td>대부도 키즈밸리<br>1600-3142</td><td>대부도 골드밸리<br>1522-3819</td></tr>
+<tr><th>주소</th><td>안산 단원구 집너머길 32-4</td><td>안산 단원구 집너머길 30-20</td><td>골드밸리 단지(대부남동) — 정확한 주소는 예약처 확인</td></tr>
+<tr><th>규모</th><td>약 105평, 2층+다락</td><td class="best">약 110평, 2층</td><td>100평 신축, 2층</td></tr>
+<tr><th>방 / 화장실</th><td>방4(+다락) / 3</td><td class="best">방5 / 3</td><td class="best">방5 / 3</td></tr>
+<tr><th>기준 / 최대</th><td>16 / 16</td><td class="best">16 / 20</td><td>15 / 18</td></tr>
+<tr><th>입실 / 퇴실</th><td>14:30 / 11:00</td><td class="best">14:00 / 11:00</td><td>15:00 / 11:00</td></tr>
+<tr><th>실내 수영장</th><td>4×6m</td><td class="best">5×9m + 워터슬라이드</td><td>워터슬라이드 (크기 미표기)</td></tr>
+<tr><th>온수풀 요금</th><td>100,000원</td><td>100,000원</td><td>100,000원 (1박)</td></tr>
+<tr><th>온수 조건</th><td>28~30℃, 입실 당일 22시까지, 2~3일 전 전화예약(1588-4062)</td><td>28~30℃, 입실 당일 22시까지, 2~3일 전 전화예약(1588-4062)</td><td>예약 시 유료옵션 선택. 키 100cm 이하 보호자 동반 필수</td></tr>
+<tr><th>바베큐</th><td>야외 그릴 무료 (숯·망 지참). 우천 시 실내 전기그릴</td><td class="best">실내 바베큐장 무료 (전기그릴·바베큐그릴·냉난방·유아의자)</td><td>실내 전용 바베큐장 (이용료 별도 여부 확인 필요)</td></tr>
+<tr><th>키즈 시설</th><td>키즈존, 키즈정글짐, 실내 트램펄린, 다락 장난감·키즈자동차, 노래방</td><td>대형 키즈존, 미니 트램펄린, 오락기3, 야외그네·놀이기구, 노래방, 안마의자, 빔프로젝터</td><td class="best">정글짐, 플레이룸(DDR·두더지·오락기·클라이밍·미니탁구·에어하키·축구게임), 야외 트램펄린·놀이터·불멍존, 노래방</td></tr>
+<tr><th>12/5 토 숙박비</th><td>1,100,000원</td><td>1,100,000원</td><td>1,100,000원</td></tr>
+<tr><th>인원 추가금</th><td>0원</td><td>0원</td><td>0원</td></tr>
+<tr><th><b>총액</b></th><td><b>1,200,000원</b></td><td class="best"><b>1,200,000원</b></td><td><b>1,200,000원</b></td></tr>
+</tbody>
+</table>
+</div>
+
+<!-- ===== DETAILS ===== -->
+<h2>펜션별 상세 설명</h2>
+
+<div class="detail">
+  <h3><span class="dot" style="background:var(--a)"></span>엘마르 키즈풀빌라</h3>
+  <div class="gallery">
+    <figure><img referrerpolicy="no-referrer" loading="lazy" src="https://img2.itravelgo.co.kr/data/pension/778/landscape/640/phpUj5irg.jpg" alt=""><figcaption>대표 사진</figcaption></figure>
+    <figure><img referrerpolicy="no-referrer" loading="lazy" src="https://img2.itravelgo.co.kr/data/pension/778/floor/1137/320/phpF43VG7.jpg" alt=""><figcaption>1층</figcaption></figure>
+    <figure><img referrerpolicy="no-referrer" loading="lazy" src="https://img2.itravelgo.co.kr/data/pension/778/floor/1138/320/phpsBSp3C.jpg" alt=""><figcaption>2층</figcaption></figure>
+    <figure><img referrerpolicy="no-referrer" loading="lazy" src="https://img2.itravelgo.co.kr/data/pension/778/floor/1139/320/phpz8EKee.jpg" alt=""><figcaption>다락방</figcaption></figure>
+    <figure><img referrerpolicy="no-referrer" loading="lazy" src="https://img2.itravelgo.co.kr/data/pension/778/floor/1140/320/phpu4Vggx.jpg" alt=""><figcaption>외부 전경</figcaption></figure>
+    <figure><img referrerpolicy="no-referrer" loading="lazy" src="https://img2.itravelgo.co.kr/data/pension/778/landscape/320/phpTXAgKu.jpg" alt=""><figcaption>객실</figcaption></figure>
+    <figure><img referrerpolicy="no-referrer" loading="lazy" src="https://img2.itravelgo.co.kr/data/pension/778/landscape/320/phpX3sM5j.jpg" alt=""><figcaption>객실</figcaption></figure>
+  </div>
+  <div class="kv">
+    <div>유형</div><div>풀빌라 독채 (2F + 다락), 약 347.1㎡ (105평형)</div>
+    <div>형태</div><div>룸 4 / 화장실 3</div>
+    <div>인원</div><div>기준 16 / 최대 16</div>
+    <div>입·퇴실</div><div>14:30 / 11:00 (21시 이후 입실은 사전 연락)</div>
+    <div>주소</div><div>경기 안산시 단원구 집너머길 32-4 (대부남동)</div>
+  </div>
+  <h3>내부 구조</h3>
+  <ul>
+    <li><b>1층</b>: 주방, 키즈존, 실내수영장(4×6), 화장실1</li>
+    <li><b>2층</b>: 거실 겸 노래방, 실내 트램펄린, 트윈베드룸 2, 침대방 1, 화장실 2</li>
+    <li><b>다락</b>: 에어컨, 키즈 장난감, 키즈 자동차, 패밀리 침대</li>
+    <li><b>부대시설</b>: 잔디마당, 야외수영장(3.5×7, 냉수 전용·6~9월만), 바베큐 그릴</li>
+  </ul>
+  <h3>구비시설</h3>
+  <ul><li>TV, 냉장고, 에어컨, 세탁기, 식탁, 소파, 구명조끼, 유아체어, 키즈룸, 키즈정글짐, 실내수영장, 트램펄린, 노래방, 전자레인지, 전기밥솥, 정수기</li></ul>
+  <h3>수영장 · 바베큐 규정</h3>
+  <ul>
+    <li>12월은 온수풀 신청만 가능, 신청 안 하면 수영장 이용 불가</li>
+    <li>온수풀 10만원, 입실일 기준 최소 2~3일 전 전화예약(1588-4062), 당일 취소 환불 불가</li>
+    <li>물 온도 28~30℃, 입실 당일 오후 10시까지</li>
+    <li>개별 바베큐 그릴 무료 — 숯·철망·목장갑·부탄가스 등은 직접 지참. 가위·집게·토치 비치</li>
+    <li>우천 시 야외 바베큐장 사용 불가 → 실내 전기그릴 사용</li>
+    <li>펜션 주변에 마트·편의점 없음 → 장보기는 입실 전에</li>
+  </ul>
+  <table class="cost">
+    <tr><td>숙박비 (비수기 주말)</td><td>1,100,000원</td></tr>
+    <tr><td>인원 추가 (14명 ≤ 기준 16명)</td><td>0원</td></tr>
+    <tr><td>온수풀</td><td>100,000원</td></tr>
+    <tr><td>바베큐 그릴</td><td>0원 (숯 등 개별 준비)</td></tr>
+    <tr class="sum"><td>합계 / 가족당</td><td>1,200,000원 / 300,000원</td></tr>
+  </table>
+  <div class="warn">최대 인원이 16명이라 잠깐 들르는 손님까지 포함해 16명을 넘으면 안 됩니다. 방이 4개라 4가족이면 다락(패밀리침대)까지 써야 할 수 있어요.</div>
+</div>
+
+<div class="detail">
+  <h3><span class="dot" style="background:var(--b)"></span>꾸꾸 키즈풀빌라</h3>
+  <div class="gallery">
+    <figure><img referrerpolicy="no-referrer" loading="lazy" src="https://img2.itravelgo.co.kr/data/pension/789/landscape/640/phpziNOI7.jpg" alt=""><figcaption>대표 사진</figcaption></figure>
+    <figure><img referrerpolicy="no-referrer" loading="lazy" src="https://img2.itravelgo.co.kr/data/pension/789/floor/1170/320/phpskjG1L.jpg" alt=""><figcaption>1층</figcaption></figure>
+    <figure><img referrerpolicy="no-referrer" loading="lazy" src="https://img2.itravelgo.co.kr/data/pension/789/floor/1171/320/php31UHmQ.jpg" alt=""><figcaption>2층</figcaption></figure>
+    <figure><img referrerpolicy="no-referrer" loading="lazy" src="https://img2.itravelgo.co.kr/data/pension/789/floor/1172/320/phpzVFoXz.jpg" alt=""><figcaption>외부 전경</figcaption></figure>
+    <figure><img referrerpolicy="no-referrer" loading="lazy" src="https://img2.itravelgo.co.kr/data/pension/789/landscape/320/php7zbu2V.jpg" alt=""><figcaption>객실</figcaption></figure>
+    <figure><img referrerpolicy="no-referrer" loading="lazy" src="https://img2.itravelgo.co.kr/data/pension/789/landscape/320/phpjUf8uW.jpg" alt=""><figcaption>객실</figcaption></figure>
+    <figure><img referrerpolicy="no-referrer" loading="lazy" src="https://img2.itravelgo.co.kr/data/pension/789/landscape/320/phpe9qcHV.jpg" alt=""><figcaption>객실</figcaption></figure>
+  </div>
+  <div class="kv">
+    <div>유형</div><div>풀빌라 독채 (2F), 약 363.6㎡ (110평형)</div>
+    <div>형태</div><div>룸 5 / 화장실 3</div>
+    <div>인원</div><div>기준 16 / 최대 20</div>
+    <div>입·퇴실</div><div>14:00 / 11:00 (21시 이후 입실은 사전 연락)</div>
+    <div>주소</div><div>경기 안산시 단원구 집너머길 30-20 (대부남동)</div>
+  </div>
+  <h3>내부 구조</h3>
+  <ul>
+    <li><b>1층</b>: 거실 겸 노래방, 주방(얼음정수기·젖병소독기·전자레인지·전기밥솥·에어프라이어·전기포트), 온돌방1(스타일러), 화장실2, 안마의자, 빔프로젝터/스크린, 공기청정기, 와이파이</li>
+    <li><b>2층</b>: 거실, 키즈존(미니 트램펄린), 침대방3, 아기침대, 화장실1, 오락기3, 다락방(침대)</li>
+    <li><b>부대시설</b>: 실내 온수수영장(5×9) + 워터슬라이드, 세탁기/건조기, 실내 바베큐장(전기그릴·바베큐그릴·유아체어·냉난방기), 야외그네, 놀이기구</li>
+  </ul>
+  <h3>구비시설</h3>
+  <ul><li>TV, 냉장고, 에어컨, 전기포트, 식탁, 소파, 유아체어, 대형키즈존, 드라이기, 노래방, 빔프로젝터, 스크린, 안마의자, 워터슬라이드, 정수기, 인터넷/와이파이, 전기밥솥, 공기청정기, 전자레인지, 젖병소독기, 세탁기, 건조기, 인덕션, 미니트램펄린, 바비큐그릴, 전기그릴, 실내수영장, 토스트기, 야외그네, 어린이 놀이기구, 바비큐장 냉·난방기</li></ul>
+  <h3>수영장 · 바베큐 규정</h3>
+  <ul>
+    <li>12월은 온수풀 신청만 가능, 신청 안 하면 수영장 이용 불가</li>
+    <li>온수풀 10만원, 최소 2~3일 전 전화예약(1588-4062), 당일 취소 환불 불가</li>
+    <li>물 온도 28~30℃, 입실 당일 오후 10시까지</li>
+    <li>독립 개별 바베큐장 무료 — 그릴만 비치, 숯·철망·장갑·부탄가스 지참</li>
+    <li>빔프로젝터 쓰려면 노트북과 HDMI 케이블 직접 준비</li>
+    <li>바베큐 배달 서비스(고기+상차림+숯·망)는 입실 1주일 전까지 신청</li>
+    <li>펜션 주변에 마트·편의점 없음</li>
+  </ul>
+  <table class="cost">
+    <tr><td>숙박비 (비수기 주말)</td><td>1,100,000원</td></tr>
+    <tr><td>인원 추가 (14명 ≤ 기준 16명)</td><td>0원</td></tr>
+    <tr><td>온수풀</td><td>100,000원</td></tr>
+    <tr><td>바베큐장</td><td>0원 (숯 등 개별 준비)</td></tr>
+    <tr class="sum"><td>합계 / 가족당</td><td>1,200,000원 / 300,000원</td></tr>
+  </table>
+  <div class="ok">같은 가격에 엘마르보다 수영장이 크고(5×9 vs 4×6), 방이 하나 더 많고, 최대인원도 20명이라 여유가 있습니다. 12월에 실내 바베큐장 냉난방이 되는 것도 장점.</div>
+</div>
+
+<div class="detail">
+  <h3><span class="dot" style="background:var(--c)"></span>고래 키즈풀빌라</h3>
+  <div class="gallery">
+    <figure><img referrerpolicy="no-referrer" loading="lazy" src="https://assets.goldenvalley.co.kr/pensions/d3aa7da2-dbab-4222-a57a-25a2b50c02c8.jpg" alt=""><figcaption>대표 사진</figcaption></figure>
+    <figure><img referrerpolicy="no-referrer" loading="lazy" src="https://cdn.imweb.me/upload/S201909306976877aea67c/e4f0e4d021dff.jpg" alt=""><figcaption>1층 실내 온수풀장</figcaption></figure>
+    <figure><img referrerpolicy="no-referrer" loading="lazy" src="https://cdn.imweb.me/upload/S201909306976877aea67c/a95c85e2b0017.jpg" alt=""><figcaption>1층 거실·키즈존</figcaption></figure>
+    <figure><img referrerpolicy="no-referrer" loading="lazy" src="https://cdn.imweb.me/upload/S201909306976877aea67c/88836eead0189.jpg" alt=""><figcaption>1층 패밀리 침대방</figcaption></figure>
+    <figure><img referrerpolicy="no-referrer" loading="lazy" src="https://cdn.imweb.me/upload/S201909306976877aea67c/4eeb5427e8439.jpg" alt=""><figcaption>실내 바베큐장</figcaption></figure>
+    <figure><img referrerpolicy="no-referrer" loading="lazy" src="https://cdn.imweb.me/upload/S201909306976877aea67c/9170e649335ae.jpg" alt=""><figcaption>2층</figcaption></figure>
+    <figure><img referrerpolicy="no-referrer" loading="lazy" src="https://cdn.imweb.me/upload/S201909306976877aea67c/a2095aa3d0b50.jpg" alt=""><figcaption>2층 플레이룸</figcaption></figure>
+    <figure><img referrerpolicy="no-referrer" loading="lazy" src="https://cdn.imweb.me/upload/S201909306976877aea67c/a70bdf51170c1.jpg" alt=""><figcaption>야외 어린이 놀이터</figcaption></figure>
+    <figure><img referrerpolicy="no-referrer" loading="lazy" src="https://cdn.imweb.me/upload/S201909306976877aea67c/dfad60862f9a9.jpg" alt=""><figcaption>외부 전경</figcaption></figure>
+  </div>
+  <div class="kv">
+    <div>유형</div><div>신축 독채 풀빌라 (2F), 100평</div>
+    <div>형태</div><div>방 5 / 화장실 3</div>
+    <div>인원</div><div>기준 15 / 최대 18 (구 사이트 일부엔 기준 12로 표기 — 신규 예약사이트 기준 15)</div>
+    <div>입·퇴실</div><div>15:00 / 11:00</div>
+    <div>예약</div><div>대부도 골드밸리 1522-3819 / 010-3911-3805</div>
+  </div>
+  <h3>내부 구조</h3>
+  <ul>
+    <li><b>1층</b>: 실내 온수풀장(슬라이드·유아용 구명조끼·튜브·콤프레셔), 거실 겸 주방, 노래방 겸 온돌방1, 화장실1, 정글짐, 키즈존, 패밀리 침대방1, 실내 전용 바베큐장</li>
+    <li><b>2층</b>: 미니거실(TV), 패밀리 침대방3, 화장실1, 오락기, 멀티룸, 대형 온돌방 겸 노래방</li>
+    <li><b>2층 플레이룸</b>: DDR 펌프게임기, 두더지, 오락기, 클라이밍, 미니탁구대, 에어하키, 축구게임</li>
+    <li><b>야외</b>: 포토존, 전용 트램펄린, 불멍존, 어린이 놀이터, 공용 족구장(유료·사전예약)</li>
+  </ul>
+  <h3>구비시설</h3>
+  <ul><li>인터넷/와이파이, 에어컨, 정수기, 전자레인지, 전기밥솥, 조리도구, 식탁, 바베큐그릴, 냉장고, TV, 소파, 쿡탑, 드라이기, 세탁기, 탈수기, 워터슬라이드, 실내 온수수영장, 젖병소독기, 샤워실, 욕실용품, 전기포트, 토스트기, 에어프라이어, 아기의자, 테라스, 실내·야외 트램펄린, 콤프레셔, 패밀리침대, 접이식 매트리스, 유아용 욕조·튜브·구명조끼, 유아용 자동차, 유아용 짚라인, 유아용 클라이밍, 스프링 흔들목마, 시소, 넷플릭스, 보드게임, 노래방, 불멍존</li></ul>
+  <h3>수영장 규정</h3>
+  <ul>
+    <li>온수풀 유료 — 1박 기준 10만원 별도</li>
+    <li>키 100cm 이하 아이는 반드시 보호자 동반, 미동반 사고 책임은 이용자</li>
+    <li>예약 시 인원 입력: 24개월까지 무료, 기준 15인 초과 시 1인 2만원</li>
+  </ul>
+  <table class="cost">
+    <tr><td>숙박비 (12/5 토)</td><td>1,100,000원</td></tr>
+    <tr><td>인원 추가 (14명 ≤ 기준 15명)</td><td>0원</td></tr>
+    <tr><td>온수풀</td><td>100,000원</td></tr>
+    <tr><td>바베큐 / 족구장</td><td>확인 필요</td></tr>
+    <tr class="sum"><td>합계 / 가족당</td><td>1,200,000원 / 300,000원</td></tr>
+  </table>
+  <div class="ok">같은 가격에 놀이시설은 3곳 중 가장 다양합니다. 다만 실내 바베큐장 이용료가 따로 붙는지는 예약할 때 확인하세요.</div>
+</div>
+
+<!-- ===== CHECKLIST ===== -->
+<h2>예약 전에 꼭 확인할 것</h2>
+<ol class="check">
+  <li><b>고래</b>: 실내 바베큐장 이용료(숯/그릴) 유무, 정확한 주소</li>
+  <li>온수풀은 <b>입실 2~3일 전</b>까지 별도 신청 (키즈밸리는 1588-4062 전화)</li>
+  <li>키즈밸리 온수풀은 <b>입실 당일 밤 10시까지만</b> — 다음날 아침 수영은 안 됨. 12월이라 28~30℃ 물은 아이들한테 다소 차게 느껴질 수 있으니 수온 문의 추천</li>
+  <li>키즈밸리 환불: 이용 7일 전까지 10% 수수료, 6일 전 20% … 2일 전 70%, 1일 전·당일 환불 불가 (예약일 기준 아닌 이용일 기준, 전체 금액에 적용)</li>
+  <li>키즈밸리는 예약 후 24시간 내 전액 입금 필요</li>
+  <li>숯·철망·장갑·부탄가스 챙기기, 근처 마트 없으니 장은 미리 (키즈밸리 1단지에 이마트24 있음)</li>
+  <li>반려동물 입실 불가, 객실 내 금연</li>
+</ol>
+
+<h2>출처</h2>
+<ul class="src">
+  <li><a href="https://kidsvalley.co.kr/room/778">엘마르 키즈풀빌라 – 대부도 키즈밸리</a></li>
+  <li><a href="https://kidsvalley.co.kr/room/789">꾸꾸 키즈풀빌라 – 대부도 키즈밸리</a></li>
+  <li><a href="https://kidsvalley.co.kr/reservation">키즈밸리 요금·예약·환불 안내</a></li>
+  <li><a href="https://goldenvalley.co.kr/rooms/P895158">고래키즈풀빌라 – 골드밸리 신규 예약사이트</a></li>
+  <li><a href="https://goldvalley.co.kr/Reservation/?idx=88">고래키즈풀빌라 – 골드밸리 상세(구 사이트)</a></li>
+</ul>
+
+</div>
+</body>
+</html>
